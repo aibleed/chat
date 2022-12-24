@@ -3,13 +3,14 @@ import { FC, useCallback } from "react";
 interface IProps {
   icon: any;
   style?: {};
+  onClick?: () => void;
 }
 
-const SidebarIcon: FC<IProps> = ({ icon, style }) => {
+const SidebarIcon: FC<IProps> = ({ icon, style, onClick }) => {
   return (
-    <div style={style} className="sidebar-icon">
+    <button onClick={onClick} style={style} className="sidebar-icon">
       {icon}
-    </div>
+    </button>
   );
 };
 export default SidebarIcon;
