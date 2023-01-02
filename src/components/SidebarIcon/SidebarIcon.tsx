@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC, memo } from "react";
 
 interface IProps {
   icon: any;
@@ -6,11 +6,11 @@ interface IProps {
   onClick?: () => void;
 }
 
-const SidebarIcon: FC<IProps> = ({ icon, style, onClick }) => {
+const SidebarIcon: FC<IProps> = memo(({ icon, style, onClick }) => {
   return (
     <button onClick={onClick} style={style} className="sidebar-icon">
       {icon}
     </button>
   );
-};
+});
 export default SidebarIcon;

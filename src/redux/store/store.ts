@@ -1,14 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-import chatMiddleware from '../../middleware/chatMiddleware';
-import crashMiddleware from '../../middleware/crashMiddleware';
-import loggerMiddleware from '../../middleware/loggerMiddleware';
-import sidebarSlice from '../slices/sidebarSlice';
-import chatSlice from '../slices/chatSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import chatMiddleware from "../../middleware/chatMiddleware";
+import crashMiddleware from "../../middleware/crashMiddleware";
+import loggerMiddleware from "../../middleware/loggerMiddleware";
+import chatSlice from "../slices/chatSlice";
 const store = configureStore({
-	reducer: { sidebarSlice, chatSlice },
-	middleware: (getDefaultMiddleware) => {
-		return getDefaultMiddleware().concat([loggerMiddleware, crashMiddleware, chatMiddleware]);
-	},
+	reducer: { chatSlice },
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(
+			crashMiddleware,
+			loggerMiddleware,
+			chatMiddleware
+		),
 });
 
 export default store;

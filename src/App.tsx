@@ -1,16 +1,33 @@
-import Chat from "./components/Chat/Chat";
-import MainChat from "./components/MainChat/MainChat";
-import Sidebar from "./components/Sidebar/Sidebar";
-
+import { lazy, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router";
+import { useAppDispatch } from "./hooks/hooks";
+import { authMe, chatActions } from "./redux/slices/chatSlice";
+import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
+const ChatPage = lazy(() => import("./pages/ChatPage"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 function App() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(authMe()).then((data) => {
+      if (data.payload.token) {
+        navigate("/home");
+      }
+    });
+    return () => {
+      dispatch(chatActions.disconnect());
+    };
+  }, []);
   return (
-    <div className="App scroll-smooth box-border">
-      <div className="flex box-border bg-primary">
-        <Sidebar />
-        <Chat />
-        <MainChat />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/signup" element={<Register />} />
+      <Route path="/" element={<Login />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/home" element={<ChatPage />} />
+      </Route>
+      <Route path="*" element={<Login />} />
+    </Routes>
   );
 }
 

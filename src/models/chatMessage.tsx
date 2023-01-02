@@ -1,7 +1,7 @@
 interface ChatMessage {
-	username: string;
 	message: string;
-	id: number;
-	event: string;
+	to: string;
+	_id?: string;
+	from: string;
 }
 export default ChatMessage;
