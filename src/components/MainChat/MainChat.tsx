@@ -1,11 +1,18 @@
+import { FC } from "react";
 import { useAppSelector } from "../../hooks/hooks";
 import { getFriends } from "../../redux/slices/chatSlice";
 import Dialogue from "../Dialogue/Dialogue";
 import Topbar from "../Topbar/Topbar";
-const MainChat = () => {
+const MainChat: FC<{ active: boolean }> = ({ active }) => {
   const friend = useAppSelector(getFriends);
+  const toggleView = active ? "invisible opacity-0 absolute " : " ";
   return (
-    <section className="h-screen w-screen border-l border-l-gray-600 bg-primary overflow-hidden ">
+    <section
+      className={
+        "w-full h-screen flex flex-col py-4 border-l sm:visible sm:opacity-100 sm:relative transition-all ease-in duration-300 border-l-gray-600 bg-primary overflow-hidden " +
+        toggleView
+      }
+    >
       <Topbar friend={friend} />
       <Dialogue />
     </section>

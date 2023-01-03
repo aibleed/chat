@@ -4,11 +4,16 @@ interface IProps {
   icon: any;
   style?: {};
   onClick?: () => void;
+  className?: string;
 }
 
-const SidebarIcon: FC<IProps> = memo(({ icon, style, onClick }) => {
+const SidebarIcon: FC<IProps> = memo(({ icon, className, style, onClick }) => {
   return (
-    <button onClick={onClick} style={style} className="sidebar-icon">
+    <button
+      onClick={onClick}
+      style={style}
+      className={"sidebar-icon " + className}
+    >
       {icon}
     </button>
   );

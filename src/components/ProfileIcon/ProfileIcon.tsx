@@ -8,7 +8,7 @@ interface IProps {
 }
 const ProfileIcon: FC<IProps> = ({ img, alt, style }) => {
   return (
-    <div style={style} className="chat__item_img ">
+    <div style={style} className="chat__item_img">
       <img style={{ borderRadius: "24px" }} src={img} alt={alt} />
     </div>
   );

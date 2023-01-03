@@ -60,7 +60,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-primary w-screen h-screen flex justify-center flex-col items-center">
+    <div className="max-[320px]:text-sm sm:py-3 bg-primary max-w-screen min-h-screen h-auto flex justify-center flex-col items-center">
       <h2 className="text-3xl mb-7 text-white ">Signup</h2>
       <MyForm handleSubmit={handleSubmit} />
       <div className="text-gray-200 mt-6 w-max h-max rounded-xl py-1 px-3">

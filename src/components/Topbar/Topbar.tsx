@@ -35,7 +35,7 @@ const Topbar: FC<IProps> = memo(({ friend }) => {
     </div>
   );
   return (
-    <div className="topbar border-b py-5 gap-2 border-b-gray-600 w-full h-fit flex flex-col items-center justify-center text-center bg-primary">
+    <div className="topbar border-b pb-5 gap-2 border-b-gray-600  w-full sm:h-fit flex flex-col items-center justify-center text-center bg-primary">
       {content}
     </div>
   );

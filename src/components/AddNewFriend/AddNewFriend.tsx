@@ -55,7 +55,7 @@ const AddNewFriend: FC<IProps> = memo(({ modal, setModal }) => {
     (modal
       ? "transition-all duration-500 visible ease-in-out opacity-100"
       : "invisible opacity-0") +
-    " transition-all ease-in-out duration-500 absolute left-1/2 right-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%] w-96 h-72 p-5 bg-gray-800 rounded-2xl z-30";
+    " transition-all ease-in-out duration-500 absolute left-1/2 right-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%] sm:w-96 sm:h-72 w-60 h-60 p-5 bg-gray-800 rounded-2xl z-30";
   return (
     <>
       <div className={classList}>

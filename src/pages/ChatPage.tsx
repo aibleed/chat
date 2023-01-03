@@ -13,11 +13,11 @@ const ChatPage = () => {
 		dispatch(chatActions.startConnecting());
 	}, []);
 	return (
-		<div className="App scroll-smooth box-border">
-			<div className="flex box-border bg-primary">
+		<div className="App relative scroll-smooth box-border ">
+			<div className="flex box-border w-screen min-h-screen h-auto bg-primary">
 				<Sidebar setActive={setActive} />
-				<FriendsList active={active} />
-				<MainChat />
+				<FriendsList setActive={setActive} active={active} />
+				<MainChat active={active} />
 			</div>
 		</div>
 	);
