@@ -11,11 +11,11 @@ function App() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(authMe()).then((data) => {
-      if (data.payload.token) {
-        navigate("/home");
-      }
-    });
+    // dispatch(authMe()).then((data) => {
+    //   if (data.payload.token) {
+    //     navigate("/home");
+    //   }
+    // });
     return () => {
       dispatch(chatActions.disconnect());
     };

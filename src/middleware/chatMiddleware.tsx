@@ -15,7 +15,9 @@ const chatMiddleware: Middleware = (store) => {
         auth: {
           token: localStorage.getItem("token"),
         },
+        autoConnect: false,
       });
+      socket.connect();
       socket.on("connect", () => {
         store.dispatch(chatActions.connectionEstablished(true));
         // socket.emit(ChatEvent.RequestAllMessages);
@@ -48,7 +50,7 @@ const chatMiddleware: Middleware = (store) => {
     if (chatActions.submitMessage.match(action) && isConnectionEstablished) {
       socket.emit("dm", action.payload);
     }
-    if (chatActions.disconnect.match(action) && isConnectionEstablished) {
+    if (chatActions.disconnect.match(action)) {
       store.dispatch(chatActions.connectionEstablished(false));
       socket.disconnect();
     }

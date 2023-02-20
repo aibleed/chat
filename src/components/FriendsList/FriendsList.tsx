@@ -1,8 +1,8 @@
 import { FC, useCallback, useMemo, Dispatch, SetStateAction } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { chatActions } from "../../redux/slices/chatSlice";
-import Loader from "../Loader/Loader";
 import ProfileIcon from "../ProfileIcon/ProfileIcon";
+import Spinner from "../Spinner/Spinner";
 
 interface IProps {
 	active: boolean;
@@ -60,7 +60,7 @@ const FriendsList: FC<IProps> = ({ active, setActive }) => {
 			);
 		});
 	}, [friends]);
-	const loading = status === "loading" ? <Loader /> : "";
+	const loading = status === "loading" ? <Spinner /> : "";
 	return (
 		<aside className={classList}>
 			<h2

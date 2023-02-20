@@ -24,7 +24,7 @@ const Sidebar: FC<IProps> = ({ setActive }) => {
     if (window.confirm("Are you sure you wanna logout?")) {
       localStorage.removeItem("token");
       dispatch(chatActions.disconnect());
-      navigate("/home");
+      navigate("/login");
     }
   }, []);
   return (
