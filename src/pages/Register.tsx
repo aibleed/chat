@@ -1,21 +1,18 @@
 import MyForm, { Values } from "../components/Form/Form";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toastOptions } from "../utils/toastOptions";
 import { toast } from "react-toastify";
 import { FormikHelpers } from "formik";
-import { IResponse } from "../models/RegisterResponse";
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { fetchRegister } from "../redux/slices/chatSlice";
 const Register = () => {
   const navigate = useNavigate();
-  const { isConnected, status } = useAppSelector((state) => state.chatSlice);
+  const { status, user } = useAppSelector((state) => state.chatSlice);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (isConnected) {
-      navigate("/home");
-    }
-  }, []);
+  if (user && user.loggedIn) {
+    return <Navigate to="/home" replace={true} />;
+    // {user && user.loggedIn && <Navigate to="/home" replace={true} />}
+  }
   const handleValidation = (values: Values) => {
     const { password, username } = values;
     if (username!.length < 3) {

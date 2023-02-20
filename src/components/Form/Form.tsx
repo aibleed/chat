@@ -62,8 +62,8 @@ const MyForm: FC<IProps> = ({ handleSubmit }) => {
       </Formik>
       <ToastContainer
         limit={3}
-        toastClassName={"max-[320px]:text-sm max-[320px]:w-52"}
-        position="bottom-right"
+        toastClassName={"max-[320px]:text-sm max-[320px]:w-44"}
+        position="bottom-center"
         autoClose={8000}
         hideProgressBar={false}
         newestOnTop={false}

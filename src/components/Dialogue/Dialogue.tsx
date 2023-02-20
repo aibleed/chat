@@ -3,18 +3,24 @@ import { Formik, FormikHelpers, Form, Field } from "formik";
 import { chatActions, getFilteredMessages } from "../../redux/slices/chatSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import ChatMessage from "../../models/chatMessage";
-import { useMemo } from "react";
+import { useEffect, useRef } from "react";
 
 const Dialogue = () => {
 	const dispatch = useAppDispatch();
 	const isFriendSelected = useAppSelector(
 		(state) => state.chatSlice.activeFriend
 	);
+	const ref = useRef<HTMLDivElement>(null);
 	const filteredMessages = useAppSelector(getFilteredMessages);
+	useEffect(() => {
+		if (ref.current) {
+			ref.current.scrollTop = ref.current.scrollHeight;
+		}
+	}, [filteredMessages]);
 	const myClassList =
-		"Dialogue__myMessage bg-blue-100 font-semibold w-max max-w-sm h-max py-2 px-4 self-end justify-self-end text-black rounded-lg break-words col-start-2";
+		"Dialogue__myMessage bg-blue-100 font-semibold sm:text-base text-xs w-max max-w-[10rem] h-max py-2 px-4 self-end justify-self-end text-black rounded-lg break-words col-start-2";
 	const friendClassList =
-		"Dialogue__friendMessage relative bg-gray-700 font-semibold max-w-sm text-white w-max col-start-1 rounded-lg h-max py-2 px-4 break-words";
+		"Dialogue__friendMessage relative bg-gray-700 sm:text-base text-xs font-semibold max-w-[10rem] text-white w-max col-start-1 rounded-lg h-max py-2 px-4 break-words";
 
 	const sendMessage = async (
 		values: ChatMessage,
@@ -28,7 +34,6 @@ const Dialogue = () => {
 			actions.setSubmitting(false);
 			actions.resetForm();
 		} else {
-			console.log("!!!!");
 		}
 	};
 	const initialValues: ChatMessage = {
@@ -41,7 +46,10 @@ const Dialogue = () => {
 
 	return (
 		<div className="w-full h-screen justify-between flex flex-col sm:gap-y-8 gap-y-0 bg-primary md:px-20 px-5 relative overflow-hidden ">
-			<div className="w-full h-full sm:mt-4 mt-2 flex-shrink overflow-y-scroll scrollDialogue flex flex-col gap-4">
+			<div
+				ref={ref}
+				className="w-full h-full sm:mt-4 mt-2 flex-shrink overflow-y-scroll scrollDialogue flex flex-col gap-4"
+			>
 				{filteredMessages.map((message) => (
 					<div
 						key={message._id}
@@ -50,7 +58,9 @@ const Dialogue = () => {
 						}
 					>
 						{message.message}
-						<span className="font-thin text-xs ml-2">{message.date}</span>
+						<span className="font-thin text-[10px] sm:text-xs ml-2">
+							{message.date}
+						</span>
 					</div>
 				))}
 			</div>

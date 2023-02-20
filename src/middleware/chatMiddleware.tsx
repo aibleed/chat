@@ -1,4 +1,3 @@
-import.meta.env.BASE_URL;
 import { Middleware } from "redux";
 import { io, Socket } from "socket.io-client";
 import { chatActions } from "../redux/slices/chatSlice";
@@ -13,7 +12,7 @@ const chatMiddleware: Middleware = (store) => {
       socket = io(import.meta.env.VITE_APP_API_URL || "", {
         withCredentials: true,
         auth: {
-          token: localStorage.getItem("token"),
+          token: localStorage.getItem("token") || "",
         },
         autoConnect: false,
       });

@@ -1,5 +1,5 @@
 export interface IResponse {
-  loggedIn: string;
+  loggedIn: boolean;
   token: string;
   username: string;
   status?: string;

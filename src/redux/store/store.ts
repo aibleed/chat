@@ -7,8 +7,8 @@ const store = configureStore({
 	reducer: { chatSlice },
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(
-			crashMiddleware,
-			loggerMiddleware,
+			// crashMiddleware,
+			// loggerMiddleware,
 			chatMiddleware
 		),
 });
