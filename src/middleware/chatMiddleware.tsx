@@ -1,3 +1,4 @@
+import.meta.env.BASE_URL;
 import { Middleware } from "redux";
 import { io, Socket } from "socket.io-client";
 import { chatActions } from "../redux/slices/chatSlice";
@@ -8,9 +9,8 @@ const chatMiddleware: Middleware = (store) => {
   return (next) => (action) => {
     const isConnectionEstablished =
       socket && store.getState().chatSlice.isConnected;
-
     if (chatActions.startConnecting.match(action)) {
-      socket = io("http://localhost:3000", {
+      socket = io(import.meta.env.VITE_APP_API_URL || "", {
         withCredentials: true,
         auth: {
           token: localStorage.getItem("token"),

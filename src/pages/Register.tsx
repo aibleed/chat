@@ -35,7 +35,7 @@ const Register = () => {
   };
   if (status === "loading") {
     toast.loading("Loading...", toastOptions);
-  } else if (status === "loaded") {
+  } else {
     toast.dismiss();
   }
   const handleSubmit = async (

@@ -32,7 +32,7 @@ export const fetchAuth = createAsyncThunk(
 	"auth/fetchAuth",
 	async (params: Values) => {
 		const { data } = await axios.post(
-			"http://localhost:3000/auth/login",
+			`${import.meta.env.VITE_APP_API_URL}/auth/login`,
 			params
 		);
 		return data;
@@ -43,19 +43,22 @@ export const fetchRegister = createAsyncThunk(
 	"auth/fetchRegister",
 	async (params: Values) => {
 		const { data } = await axios.post(
-			"http://localhost:3000/auth/signup",
+			`${import.meta.env.VITE_APP_API_URL}/auth/signup`,
 			params
 		);
 		return data;
 	}
 );
 export const authMe = createAsyncThunk("auth/me", async () => {
-	const { data } = await axios.get("http://localhost:3000/auth/login", {
-		withCredentials: true,
-		headers: {
-			authorization: `Bearer ` + localStorage.getItem("token"),
-		},
-	});
+	const { data } = await axios.get(
+		`${import.meta.env.VITE_APP_API_URL}/auth/login`,
+		{
+			withCredentials: true,
+			headers: {
+				authorization: `Bearer ` + localStorage.getItem("token"),
+			},
+		}
+	);
 	return data;
 });
 

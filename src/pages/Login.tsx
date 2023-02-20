@@ -17,7 +17,7 @@ const Login = () => {
   }, []);
   if (status === "loading") {
     toast.loading("Loading...", toastOptions);
-  } else if (status === "loaded") {
+  } else {
     toast.dismiss();
   }
   const handleValidation = (values: Values) => {
