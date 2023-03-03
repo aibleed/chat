@@ -20,7 +20,7 @@ function App() {
     };
   }, []);
   return (
-    <main className="h-screen overflow-hidden">
+    <main className="h-screen w-screen overflow-hidden">
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/signup" element={<Register />} />

@@ -45,7 +45,7 @@ const Dialogue = () => {
 	};
 
 	return (
-		<div className="w-full h-screen justify-between flex flex-col sm:gap-y-8 gap-y-0 bg-primary md:px-20 px-5 relative overflow-hidden ">
+		<div className="w-full h-full justify-between flex flex-col sm:gap-y-8 gap-y-0 bg-primary md:px-20 px-5 relative overflow-hidden ">
 			<div
 				ref={ref}
 				className="w-full h-full sm:mt-4 mt-2 flex-shrink overflow-y-scroll scrollDialogue flex flex-col gap-4"

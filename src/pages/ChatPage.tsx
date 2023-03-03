@@ -11,12 +11,10 @@ const ChatPage = () => {
         dispatch(chatActions.startConnecting());
     }, []);
     return (
-        <div className="App relative overflow-hidden box-border ">
-            <div className="flex box-border w-screen min-h-screen bg-primary">
-                <Sidebar setActive={setActive} />
-                <FriendsList setActive={setActive} active={active} />
-                <MainChat active={active} />
-            </div>
+        <div className="flex w-full h-full bg-primary">
+            <Sidebar setActive={setActive} />
+            <FriendsList setActive={setActive} active={active} />
+            <MainChat active={active} />
         </div>
     );
 };
