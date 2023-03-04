@@ -51,7 +51,7 @@ const chatMiddleware: Middleware = (store) => {
 		}
 
 		if (chatActions.setNewFriend.match(action) && isConnectionEstablished) {
-			socket.emit('add_friend', action.payload.username, ({ errorMsg, done, newFriend }: IErrorFriend) => {
+			socket.emit('add_friend', action.payload, ({ errorMsg, done, newFriend }: IErrorFriend) => {
 				if (done) {
 					store.dispatch(chatActions.sumbitNewFriend(newFriend));
 					return;
