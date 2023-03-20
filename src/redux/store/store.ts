@@ -4,13 +4,13 @@ import crashMiddleware from "../../middleware/crashMiddleware";
 import loggerMiddleware from "../../middleware/loggerMiddleware";
 import chatSlice from "../slices/chatSlice";
 const store = configureStore({
-	reducer: { chatSlice },
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(
-			// crashMiddleware,
-			// loggerMiddleware,
-			chatMiddleware
-		),
+  reducer: { chatSlice },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      // crashMiddleware,
+      // loggerMiddleware,
+      chatMiddleware
+    ),
 });
 
 export default store;
